@@ -1,9 +1,8 @@
 package com.gfi.appcommercial.dao;
 
-import com.gfi.appcommercial.mocks.NeedMocks;
+import com.gfi.appcommercial.mocks.NeedMock;
 import com.gfi.appcommercial.model.Need;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NeedDAO {
@@ -13,14 +12,14 @@ public class NeedDAO {
      */
     private static NeedDAO instance = new NeedDAO();
 
-    private NeedMocks mock;
+    private NeedMock mock;
 
     public static NeedDAO getInstance() {
         return instance;
     }
 
     public NeedDAO() {
-        mock = new NeedMocks();
+        mock = new NeedMock();
     }
     /**
      * List of need sheets, retrieved from server

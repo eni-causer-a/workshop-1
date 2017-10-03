@@ -11,13 +11,13 @@ import java.util.Random;
 
 import io.bloco.faker.Faker;
 
-public class NeedMocks {
+public class NeedMock {
 
     private Faker faker;
 
     private List<Need> needs;
 
-    public NeedMocks() {
+    public NeedMock() {
         faker = new Faker();
     }
 
