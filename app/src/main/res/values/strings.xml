@@ -29,7 +29,7 @@
     <string name="fiche_besoin_browse">Browse...</string>
     <string name="fiche_besoin_status">Status : </string>
     <string name="fiche_besoin_upload">UPLOAD</string>
-    <string name="fiche_besoin_saves_hare">SAVE & SHARE</string>
+    <string name="fiche_besoin_saves_hare">SAVE &amp; SHARE</string>
     <string name="fiche_besoin_cancel">CANCEL</string>
     <string name="add">add</string>
     <string-array name="tri">
