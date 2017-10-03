@@ -1,26 +1,20 @@
 package com.gfi.appcommercial.dao;
 
+import com.gfi.appcommercial.model.Commercial;
+
 /**
  * CommercialDAO
  *
- * Handles everything related to user (commercial) management.
- * It only handles login in this POC but could also handle password change, signup and such.
+ * Handles everything related to user (commercial) management
  */
 public class CommercialDAO {
 
     /**
-     * Commercial email
+     * Commercial
      *
      * Stored to enable auto-login when token expires
      */
-    private String email;
-
-    /**
-     * Commercial password
-     *
-     * Stored to enable auto-login when token expires
-     */
-    private String password;
+    private Commercial user;
 
     /**
      * Singleton instance
@@ -46,9 +40,20 @@ public class CommercialDAO {
      * @return login success
      */
     public boolean login(String email, String password) {
-        this.email = email;
-        this.password = password;
+        //todo: login, retrieve name and store it into the user object
+        user = new Commercial(email, password);
 
+        user.setName("fake");
+        
         return true;
+    }
+
+    /**
+     * Get commercial name
+     *
+     * @return String
+     */
+    public String getName() {
+        return user.getName();
     }
 }
