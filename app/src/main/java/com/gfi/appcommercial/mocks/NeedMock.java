@@ -33,8 +33,6 @@ public class NeedMock {
 
     private Need createNeed() {
 
-        List<String> mainKeyFactors = new ArrayList<>();
-
         return new Need(
                 faker.name.name(),
                 faker.company.name(),
