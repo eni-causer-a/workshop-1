@@ -151,7 +151,7 @@ public class Need {
     }
 
     public boolean addMainKeyFactor(String mainKeyFactor) {
-        if (mainKeyFactors.size() < 5) {
+        if (mainKeyFactors.size() < 3) {
             mainKeyFactors.add(mainKeyFactor);
             return true;
         }
@@ -164,7 +164,7 @@ public class Need {
     }
 
     public boolean setMainKeyFactors(List<String> mainKeyFactors) {
-        if (mainKeyFactors.size() <= 5) {
+        if (mainKeyFactors.size() <= 3) {
             this.mainKeyFactors = mainKeyFactors;
             return true;
         }
@@ -177,7 +177,7 @@ public class Need {
     }
 
     public boolean addConsultant(String consultant) {
-        if (consultants.size() < 3) {
+        if (consultants.size() < 5) {
             consultants.add(consultant);
             return true;
         }
@@ -190,7 +190,7 @@ public class Need {
     }
 
     public boolean setConsultants(List<String> consultants) {
-        if (consultants.size() <= 3) {
+        if (consultants.size() <= 5) {
             this.consultants = consultants;
             return true;
         }
