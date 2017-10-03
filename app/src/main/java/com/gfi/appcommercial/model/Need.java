@@ -82,6 +82,24 @@ public class Need {
      */
     private Map<String, File> descriptionFiles;
 
+    public Need(String commercialName, String client, String contactName, String title, String fullDescription, String location, String geolocation, String status, List<String> mainKeyFactors, List<String> consultants, int durationMonths, int durationDaysPerWeek, Date startAtLastest, Date date, Map<String, File> descriptionFiles) {
+        this.commercialName = commercialName;
+        this.client = client;
+        this.contactName = contactName;
+        this.title = title;
+        this.fullDescription = fullDescription;
+        this.location = location;
+        this.geolocation = geolocation;
+        this.status = status;
+        this.mainKeyFactors = mainKeyFactors;
+        this.consultants = consultants;
+        this.durationMonths = durationMonths;
+        this.durationDaysPerWeek = durationDaysPerWeek;
+        this.startAtLastest = startAtLastest;
+        this.date = date;
+        this.descriptionFiles = descriptionFiles;
+    }
+
     public String getCommercialName() {
         return commercialName;
     }
