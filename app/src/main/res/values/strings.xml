@@ -15,4 +15,29 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="fiche_besoin_date">Date: 01/01/2000</string>
+    <string name="fiche_besoin_raison_social">Client</string>
+    <string name="fiche_besoin_nom_client">Contact name</string>
+    <string name="fiche_besoin_titre">Title</string>
+    <string name="fiche_besoin_commercial_name">Commercial Name</string>
+    <string name="fiche_besoin_description">Full description</string>
+    <string name="fiche_besoin_key1">Sucess Factor 1</string>
+    <string name="fiche_besoin_key2">Sucess Factor 2</string>
+    <string name="fiche_besoin_key3">Sucess Factor 3</string>
+    <string name="fiche_besoin_duration">Duration (months)</string>
+    <string name="fiche_besoin_day">Days/week</string>
+    <string name="fiche_besoin_location">Location</string>
+    <string name="fiche_besoin_rate">Rate (€ excl. taxes)</string>
+    <string name="fiche_besoin_browse">Browse...</string>
+    <string name="fiche_besoin_status">Status : </string>
+    <string name="fiche_besoin_upload">UPLOAD</string>
+    <string name="fiche_besoin_saves_hare">SAVE &amp; SHARE</string>
+    <string name="fiche_besoin_cancel">CANCEL</string>
+    <string name="add">add</string>
+    <string-array name="tri">
+        <item>Lost</item>
+        <item>Win</item>
+        <item>Open</item>
+    </string-array>
+
 </resources>
