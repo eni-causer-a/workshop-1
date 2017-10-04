@@ -35,9 +35,8 @@
     <string name="fiche_besoin_cancel">CANCEL</string>
     <string name="add">add</string>
     <string-array name="tri">
+        <item>Open</item>
         <item>Lost</item>
         <item>Win</item>
-        <item>Open</item>
     </string-array>
-
 </resources>
