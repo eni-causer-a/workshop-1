@@ -104,7 +104,7 @@ public class ListActivity extends AppCompatActivity {
 
 
         }
-        
+
         //tri open
 
         for (i=0;i<j;i++){
