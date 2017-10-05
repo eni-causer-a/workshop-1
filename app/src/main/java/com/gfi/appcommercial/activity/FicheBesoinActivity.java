@@ -220,7 +220,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(editTextConsultant1.length() == 1 && editTextConsultant2.getVisibility()== View.INVISIBLE){
+                if(editTextConsultant1.length() == 1 && editTextConsultant2.getVisibility()== View.GONE){
                     editTextConsultant2.setVisibility(View.VISIBLE);
                     editTextConsultant2.setTranslationY(editTextConsultant2.getTranslationY()+150);
                     linearRel.setTranslationY(linearRel.getTranslationY()+150);
@@ -243,7 +243,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(editTextConsultant2.length() == 1 && editTextConsultant3.getVisibility()== View.INVISIBLE){
+                if(editTextConsultant2.length() == 1 && editTextConsultant3.getVisibility()== View.GONE){
                     editTextConsultant3.setVisibility(View.VISIBLE);
                     editTextConsultant3.setTranslationY(editTextConsultant2.getTranslationY()+150);
                     linearRel.setTranslationY(linearRel.getTranslationY()+150);
@@ -267,7 +267,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(editTextConsultant3.length() == 1 && editTextConsultant4.getVisibility()== View.INVISIBLE){
+                if(editTextConsultant3.length() == 1 && editTextConsultant4.getVisibility()== View.GONE){
                     editTextConsultant4.setVisibility(View.VISIBLE);
                     editTextConsultant4.setTranslationY(editTextConsultant3.getTranslationY()+150);
                     linearRel.setTranslationY(linearRel.getTranslationY()+150);
@@ -291,7 +291,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(editTextConsultant4.length() == 1 && editTextConsultant5.getVisibility()== View.INVISIBLE){
+                if(editTextConsultant4.length() == 1 && editTextConsultant5.getVisibility()== View.GONE){
                     editTextConsultant5.setVisibility(View.VISIBLE);
                     editTextConsultant5.setTranslationY(editTextConsultant4.getTranslationY()+150);
                     linearRel.setTranslationY(linearRel.getTranslationY()+150);
@@ -365,7 +365,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
             editTextRate.setText(Double.toString(unBesoinM.getRate()));
 
             editTextConsultant1 = (EditText) findViewById(R.id.editTextConsultant1);
-            editTextConsultant1.setVisibility(View.GONE); // DAO NON GERER
+            editTextConsultant1.setVisibility(View.GONE);// DAO NON GERE
 
             editTextKey1 = (EditText) findViewById(R.id.editTextKey1);
             editTextKey1.setVisibility(View.GONE);
