@@ -1,5 +1,6 @@
 package com.gfi.appcommercial.activity;
 
+
 import android.content.Intent;
 import android.database.MatrixCursor;
 import android.os.Bundle;
@@ -7,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+import android.widget.Button;
 
 import com.gfi.appcommercial.R;
 import com.gfi.appcommercial.dao.NeedDAO;
@@ -132,17 +133,15 @@ public class ListActivity extends AppCompatActivity {
                 }
             }
         });
-
         final Button loginButton = (Button) findViewById(R.id.button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ListActivity.this, FicheBesoinActivity.class);
-                startActivity(intent);
-            }
-        });
-
+ -        loginButton.setOnClickListener(new View.OnClickListener() {
+ -
+ -            @Override
+ -            public void onClick(View v) {
+ -                Intent intent = new Intent(ListActivity.this, FicheBesoinActivity.class);
+ -                startActivity(intent);
+ -            }
+ -        });
 
     }
 
