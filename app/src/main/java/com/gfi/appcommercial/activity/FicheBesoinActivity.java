@@ -6,13 +6,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.CheckBox;
@@ -121,6 +124,12 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
     Date tmp;
 
+    //Layout
+
+    LinearLayout linearRel;
+    RelativeLayout relLay;
+    ViewGroup.LayoutParams params;
+
 
 
 
@@ -129,6 +138,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fiche_besoin);
+
 
         // récupération des TextView grâce à leur ID
 
@@ -141,6 +151,12 @@ public class FicheBesoinActivity extends AppCompatActivity {
         textViewNomCommercial = (TextView) findViewById(R.id.textViewNomCommercial);
         textViewNomCommercial.setText(EXTRA_NOM);
         textViewStatus = (TextView) findViewById(R.id.textViewStatus);
+
+        //Layout
+
+        linearRel = (LinearLayout) findViewById(R.id.linearRel);
+        relLay = (RelativeLayout) findViewById(R.id.relLay);
+        params = relLay.getLayoutParams();
 
         // récupération des EditText grâce à leur ID
 
@@ -156,7 +172,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
         editTextRate = (EditText) findViewById(R.id.editTextRate);
         editTextConsultant1 = (EditText) findViewById(R.id.editTextConsultant1);
 
-/*        editTextConsultant1.addTextChangedListener(new TextWatcher() {
+        editTextConsultant1.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void afterTextChanged(Editable s) {}
@@ -169,13 +185,87 @@ public class FicheBesoinActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0)
-                    editTextConsultant2
+                if(editTextConsultant1.length() == 1 && editTextConsultant2.getVisibility()== View.INVISIBLE){
+                    editTextConsultant2.setVisibility(View.VISIBLE);
+                    editTextConsultant2.setTranslationY(editTextConsultant2.getTranslationY()+150);
+                    linearRel.setTranslationY(linearRel.getTranslationY()+150);
+                    params.height = (params.height + 150);
+                    relLay.setLayoutParams(params);}
+
             }
-        });*/
+        });
         editTextConsultant2 = (EditText) findViewById(R.id.editTextConsultant2);
+        editTextConsultant2.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(editTextConsultant2.length() == 1 && editTextConsultant3.getVisibility()== View.INVISIBLE){
+                    editTextConsultant3.setVisibility(View.VISIBLE);
+                    editTextConsultant3.setTranslationY(editTextConsultant2.getTranslationY()+150);
+                    linearRel.setTranslationY(linearRel.getTranslationY()+150);
+                    params.height = (params.height + 150);
+                    relLay.setLayoutParams(params);}
+
+
+            }
+        });
         editTextConsultant3 = (EditText) findViewById(R.id.editTextConsultant3);
+        editTextConsultant3.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(editTextConsultant3.length() == 1 && editTextConsultant4.getVisibility()== View.INVISIBLE){
+                    editTextConsultant4.setVisibility(View.VISIBLE);
+                    editTextConsultant4.setTranslationY(editTextConsultant3.getTranslationY()+150);
+                    linearRel.setTranslationY(linearRel.getTranslationY()+150);
+                    params.height = (params.height + 150);
+                    relLay.setLayoutParams(params);}
+
+
+            }
+        });
         editTextConsultant4 = (EditText) findViewById(R.id.editTextConsultant4);
+        editTextConsultant4.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(editTextConsultant4.length() == 1 && editTextConsultant5.getVisibility()== View.INVISIBLE){
+                    editTextConsultant5.setVisibility(View.VISIBLE);
+                    editTextConsultant5.setTranslationY(editTextConsultant4.getTranslationY()+150);
+                    linearRel.setTranslationY(linearRel.getTranslationY()+150);
+                    params.height = (params.height + 150);
+                    relLay.setLayoutParams(params);}
+
+
+            }
+        });
         editTextConsultant5 = (EditText) findViewById(R.id.editTextConsultant5);
         autoCompleteTextViewRaisonSocial = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewRaisonSocial);
 

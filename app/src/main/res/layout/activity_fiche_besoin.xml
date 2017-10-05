@@ -196,15 +196,6 @@
                 android:text="@string/fiche_besoin_upload"
                 android:textAlignment="center" />
 
-            <EditText
-                android:id="@+id/editTextConsultant1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textMultiLine" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -226,14 +217,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:layout_weight="1"
-                    />
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="130dp">
+                android:id="@+id/relLay"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <EditText
+                    android:id="@+id/editTextConsultant1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/fiche_besoin_consultant1"
+                    android:inputType="textMultiLine" />
 
                 <EditText
                     android:id="@+id/editTextConsultant2"
@@ -253,6 +254,7 @@
                     android:layout_margin="@dimen/activity_horizontal_margin"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:hint="@string/fiche_besoin_consultant3"
                     android:inputType="textMultiLine"
                     android:visibility="invisible" />
 
@@ -263,6 +265,7 @@
                     android:layout_margin="@dimen/activity_horizontal_margin"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:hint="@string/fiche_besoin_consultant4"
                     android:inputType="textMultiLine"
                     android:visibility="invisible" />
 
@@ -272,10 +275,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_horizontal_margin"
                     android:ems="10"
+                    android:hint="@string/fiche_besoin_consultant5"
                     android:inputType="textMultiLine"
                     android:visibility="invisible" />
 
                 <LinearLayout
+                    android:id="@+id/linearRel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="16dp"
