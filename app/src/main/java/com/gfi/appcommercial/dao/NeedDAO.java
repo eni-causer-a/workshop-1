@@ -1,9 +1,25 @@
 package com.gfi.appcommercial.dao;
 
+import android.app.Application;
+import android.util.Log;
+
 import com.gfi.appcommercial.mocks.NeedMock;
 import com.gfi.appcommercial.model.Need;
+import com.gfi.appcommercial.utils.ApiConnector;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class NeedDAO {
 
@@ -28,7 +44,13 @@ public class NeedDAO {
      */
     public List<Need> getAll() {
         // todo: implement
-        return mock.getNeeds(25);
+
+        ApiConnector connector = new ApiConnector();
+        String response = connector.getData(ApiConnector.NEED, "GET", "");
+
+        Log.i("AppCommercial", response);
+
+        return convertJSONArrayToNeedList(response);
     }
 
     /**
@@ -49,7 +71,11 @@ public class NeedDAO {
      * @return wether or not the need has been posted on the server
      */
     public boolean post(Need need) {
-        // todo: implement
+
+//        ApiConnector connector = new ApiConnector();
+//        String response = connector.getData(ApiConnector.NEED, "POST", convertToJson(need));
+//        Log.i("AppCommercial", response);
+
         return true;
     }
 
@@ -62,5 +88,83 @@ public class NeedDAO {
     public boolean update(Need need) {
         // todo: implement
         return true;
+    }
+
+    public List<Need> convertJSONArrayToNeedList(String raw) {
+
+        List<Need> needs = new ArrayList<>();
+
+        try {
+            JSONArray jsonArray = new JSONArray(raw);
+
+            for (int i=0 ; i < jsonArray.length() ; i++) {
+                needs.add(convertJSONObject(jsonArray.getJSONObject(i)));
+            }
+        }
+        catch (JSONException e) {
+            Log.e("AppCommerciak", e.getMessage());
+        }
+
+        return needs;
+    }
+
+    private Need convertJSONObject(JSONObject obj) {
+
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.FRANCE);
+
+        try {
+            return new Need(
+                    obj.getString("commercial"),
+                    obj.getString("client"),
+                    obj.getString("contactName"),
+                    obj.getString("title"),
+                    obj.getString("fullDescription"),
+                    obj.getString("location"),
+                    obj.getDouble("rate"),
+                    obj.getString("geolocation"),
+                    obj.getString("status"),
+                    new ArrayList<String>(),
+                    new ArrayList<String>(),
+                    obj.getInt("durationMonths"),
+                    obj.getInt("durationDaysPerWeek"),
+                    formatter.parse(obj.getString("startAtLatest")),
+                    formatter.parse(obj.getString("date")),
+                    new HashMap<String, File>()
+            );
+        }
+        catch (JSONException | ParseException e) {
+            Log.e("AppCommercial", e.getMessage());
+
+            return null;
+        }
+    }
+
+    public String convertToJson(Need need) {
+        JSONObject object = new JSONObject();
+
+        try {
+            object.put("commercial", need.getCommercialName());
+            object.put("client", need.getClient());
+            object.put("contactName", need.getContactName());
+            object.put("title", need.getTitle());
+            object.put("fullDescription", need.getFullDescription());
+            object.put("location", need.getFullDescription());
+            object.put("rate", need.getRate());
+            object.put("geolocation", need.getGeolocation());
+            object.put("status", need.getStatus());
+            object.put("mainkeyFactor1", "");
+            object.put("mainKeyFactor2", "");
+            object.put("mainKeyFactor3", "");
+            object.put("consultants", need.getConsultants());
+            object.put("durationMonths", need.getDurationMonths());
+            object.put("durationDaysPerWeek", need.getDurationDaysPerWeek());
+            object.put("startAtLatest", need.getStartAtLastest());
+            object.put("date", need.getDate());
+        }
+        catch (JSONException e) {
+            Log.e("AppCommercial", e.getMessage());
+        }
+
+        return object.toString();
     }
 }
