@@ -120,11 +120,19 @@ public class ListActivity extends AppCompatActivity {
         for (i=0;i<l;i++){
             matrixCursor.addRow(new Object[]{1 + c, needs.get(gestionLost[i]).getClient(), needs.get(gestionLost[i]).getTitle(), needs.get(gestionLost[i]).getDate(), needs.get(gestionLost[i]).getStatus()});
         }
+        MatrixCursor matrixtitre=new MatrixCursor(columns);
+        startManagingCursor(matrixtitre);
 
+        matrixtitre.addRow(new Object[]{1 ,"Client","Title", "Date", "Status"});
         // création de l'objet SimpleCursorAdapter...
         curserAdapter = new SimpleCursorAdapter(this, R.layout.row_item, matrixCursor, from, to, 0);
 
+        SimpleCursorAdapter titre = new SimpleCursorAdapter(this, R.layout.row_item, matrixtitre, from, to, 0);
+
+
         // ...qui va remplir l'objet ListView
+        ListView listv=(ListView) findViewById(R.id.listv);
+        listv.setAdapter(titre);
         lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(curserAdapter);
 
