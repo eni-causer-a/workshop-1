@@ -22,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.FicheBesoinActivity"
+            android:label="@string/fiche_besoin_titre" />
+        <activity
+            android:name=".activity.ListActivity"
+            android:label="list_client" />
     </application>
 
 </manifest>
