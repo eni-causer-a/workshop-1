@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.Button;
 
 import com.gfi.appcommercial.R;
 import com.gfi.appcommercial.dao.NeedDAO;
@@ -21,14 +21,19 @@ import java.util.Date;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
-    private ListView mListView;
+    ListView lv;
     Spinner spinner;
-    private final String EXTRA_MOD = "0";
 
+    SimpleCursorAdapter curserAdapter;
+    MatrixCursor matrixCursor;
+
+    private final String EXTRA_MOD = "0";
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
 
         //Spinner initialisation
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -68,7 +73,7 @@ public class ListActivity extends AppCompatActivity {
         // un objet de type Cursor pour le passer au SimpleCursorAdapter.
         // Si vos données sont issues d'une base SQLite,
         // utilisez votre "cursor" au lieu du "matrixCursor"
-        MatrixCursor matrixCursor = new MatrixCursor(columns);
+        matrixCursor = new MatrixCursor(columns);
         startManagingCursor(matrixCursor);
 
         // on prendra les données des colonnes 1 a 4
@@ -119,12 +124,20 @@ public class ListActivity extends AppCompatActivity {
         for (i=0;i<l;i++){
             matrixCursor.addRow(new Object[]{1 + c, needs.get(gestionLost[i]).getClient(), needs.get(gestionLost[i]).getTitle(), needs.get(gestionLost[i]).getDate(), needs.get(gestionLost[i]).getStatus()});
         }
+        MatrixCursor matrixtitre=new MatrixCursor(columns);
+        startManagingCursor(matrixtitre);
 
+        matrixtitre.addRow(new Object[]{1 ,"Client","Title", "Date", "Status"});
         // création de l'objet SimpleCursorAdapter...
-        SimpleCursorAdapter curserAdapter = new SimpleCursorAdapter(this, R.layout.row_item, matrixCursor, from, to, 0);
+        curserAdapter = new SimpleCursorAdapter(this, R.layout.row_item, matrixCursor, from, to, 0);
+
+        SimpleCursorAdapter titre = new SimpleCursorAdapter(this, R.layout.row_item, matrixtitre, from, to, 0);
+
 
         // ...qui va remplir l'objet ListView
-        ListView lv = (ListView) findViewById(R.id.listView);
+        ListView listv=(ListView) findViewById(R.id.listv);
+        listv.setAdapter(titre);
+        lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(curserAdapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -138,6 +151,8 @@ public class ListActivity extends AppCompatActivity {
                 }
             }
         });
+
+
         final Button loginButton = (Button) findViewById(R.id.button);
 
          loginButton.setOnClickListener(new View.OnClickListener() {
