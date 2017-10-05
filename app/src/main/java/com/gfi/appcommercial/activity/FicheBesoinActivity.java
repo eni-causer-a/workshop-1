@@ -511,7 +511,10 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
             Boolean reussite = NeedDAO.getInstance().post(unBesoin);
             if (reussite){
-                return "New need added";}
+
+                return "New need added";
+
+            }
             else
                 return "Error add fail";
         }
@@ -521,6 +524,8 @@ public class FicheBesoinActivity extends AppCompatActivity {
             text = msg;
             time = Toast.LENGTH_LONG;
             Toast.makeText(context, text, time).show();
+            
+            finish();
 
             //progressBar.setVisibility(View.GONE);
         }

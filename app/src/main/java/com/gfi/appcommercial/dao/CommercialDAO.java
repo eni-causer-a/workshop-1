@@ -43,7 +43,7 @@ public class CommercialDAO {
         //todo: login, retrieve name and store it into the user object
         user = new Commercial(email, password);
 
-        user.setName("fake");
+        user.setName("Jean Dupont");
         
         return true;
     }
