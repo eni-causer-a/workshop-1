@@ -23,6 +23,7 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity {
     private ListView mListView;
     Spinner spinner;
+    private final String EXTRA_MOD = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +140,8 @@ public class ListActivity extends AppCompatActivity {
              @Override
              public void onClick(View v) {
                  Intent intent = new Intent(ListActivity.this, FicheBesoinActivity.class);
+                 intent.putExtra(EXTRA_MOD, "add");
+
                  startActivity(intent);
              }
          });
