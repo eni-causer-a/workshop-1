@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onClick(View view) {
                 email = mEmailView.getText().toString();
                 password = mPasswordView.getText().toString();
-                Boolean rememberMe = mRememberMeView.isChecked();
+
                 if (CommercialDAO.getInstance().login(email, password)){
                     attemptLogin();
                     //todo: gestion du remember me

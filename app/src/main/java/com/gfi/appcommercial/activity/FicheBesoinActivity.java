@@ -296,7 +296,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
                     editTextConsultant5.setTranslationY(editTextConsultant4.getTranslationY()+150);
                     linearRel.setTranslationY(linearRel.getTranslationY()+150);
                     params.height = (params.height + 150);
-                    relLay.setLayoutParams(params);}
+                    relLay.setLayoutParams(params); }
 
 
             }

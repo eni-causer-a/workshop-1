@@ -206,7 +206,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="@string/fiche_besoin_consultant1"
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine"
+                    android:visibility="visible" />
 
                 <EditText
                     android:id="@+id/editTextConsultant2"
@@ -217,7 +218,7 @@
                     android:ems="10"
                     android:hint="@string/fiche_besoin_consultant2"
                     android:inputType="textMultiLine"
-                    android:visibility="invisible" />
+                    android:visibility="gone" />
 
                 <EditText
                     android:id="@+id/editTextConsultant3"
@@ -228,7 +229,7 @@
                     android:ems="10"
                     android:hint="@string/fiche_besoin_consultant3"
                     android:inputType="textMultiLine"
-                    android:visibility="invisible" />
+                    android:visibility="gone" />
 
                 <EditText
                     android:id="@+id/editTextConsultant4"
@@ -239,7 +240,7 @@
                     android:ems="10"
                     android:hint="@string/fiche_besoin_consultant4"
                     android:inputType="textMultiLine"
-                    android:visibility="invisible" />
+                    android:visibility="gone" />
 
                 <EditText
                     android:id="@+id/editTextConsultant5"
@@ -249,7 +250,7 @@
                     android:ems="10"
                     android:hint="@string/fiche_besoin_consultant5"
                     android:inputType="textMultiLine"
-                    android:visibility="invisible" />
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/linearRel"
