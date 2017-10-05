@@ -82,7 +82,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView = (AutoCompleteTextView) findViewById(R.id.password);
         populateAutoComplete();
 
-        mRememberMeView = (Checkable) findViewById(R.id.checkBox);
 
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
