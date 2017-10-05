@@ -24,10 +24,13 @@ public class ListActivity extends AppCompatActivity {
     ListView lv;
     Spinner spinner;
 
+    private final String EXTRA_MOD = "0";
+    private final String EXTRA_TITLE = "title";
+
+
     SimpleCursorAdapter curserAdapter;
     MatrixCursor matrixCursor;
 
-    private final String EXTRA_MOD = "0";
   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,7 @@ public class ListActivity extends AppCompatActivity {
         });
 
         NeedDAO dao = NeedDAO.getInstance();
-        List<Need> needs = dao.getAll();
+        final List<Need> needs = dao.getAll();
 
         // Définition des colonnes
         // NB : SimpleCursorAdapter a besoin obligatoirement d'un ID nommé "_id"
@@ -73,7 +76,9 @@ public class ListActivity extends AppCompatActivity {
         // un objet de type Cursor pour le passer au SimpleCursorAdapter.
         // Si vos données sont issues d'une base SQLite,
         // utilisez votre "cursor" au lieu du "matrixCursor"
-        matrixCursor = new MatrixCursor(columns);
+
+        final MatrixCursor matrixCursor = new MatrixCursor(columns);
+
         startManagingCursor(matrixCursor);
 
         // on prendra les données des colonnes 1 a 4
@@ -142,13 +147,15 @@ public class ListActivity extends AppCompatActivity {
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView,
-                                    View view, int position, long id) {
-                switch (position) {
-                    case 0:
+            public void onItemClick(AdapterView<?> adapterView,View view, int position, long id) {
+                matrixCursor.moveToPosition(position);
 
-                        break;
-                }
+                String title = matrixCursor.getString(2);// get title
+                Intent intent = new Intent(ListActivity.this, FicheBesoinActivity.class);
+                intent.putExtra(EXTRA_MOD, "mod");
+                intent.putExtra(EXTRA_TITLE, title) ;
+                startActivity(intent);
+
             }
         });
 

@@ -107,6 +107,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
 
     private final String EXTRA_MOD = "0";
+    private final String EXTRA_TITLE = "title";
 
     // Le besoin
 
@@ -137,6 +138,11 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
     private String nom;
     private String add_mod;
+    private String nt; //Need title
+
+    //Objet Besoin
+
+    private Need unBesoinM ;
 
 
 
@@ -149,25 +155,34 @@ public class FicheBesoinActivity extends AppCompatActivity {
         Intent uneIntent = getIntent();
         nom = CommercialDAO.getInstance().getName();
         add_mod = uneIntent.getStringExtra(EXTRA_MOD);
+        nt = uneIntent.getStringExtra(EXTRA_TITLE);
 
-        if (add_mod.equals("add")){
+
         // récupération des TextView grâce à leur ID
 
-        currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-        textViewDate = (TextView) findViewById(R.id.textViewDate);
-        textViewDate.setText("Date : " + currentDateTimeString );
 
-        textViewFileToUp = (TextView) findViewById(R.id.textViewFileToUp);
+
+
         //Le nomdu fichier à mettre ici quand il est up
         textViewNomCommercial = (TextView) findViewById(R.id.textViewNomCommercial);
         textViewNomCommercial.setText(nom);
         textViewStatus = (TextView) findViewById(R.id.textViewStatus);
 
-        //Layout
+        //Date picker
 
-        linearRel = (LinearLayout) findViewById(R.id.linearRel);
-        relLay = (RelativeLayout) findViewById(R.id.relLay);
-        params = relLay.getLayoutParams();
+        datePickerStartDate = (DatePicker) findViewById(R.id.datePickerStartDate);
+
+        if (add_mod.equals("add")){
+
+            currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+            textViewDate = (TextView) findViewById(R.id.textViewDate);
+            textViewDate.setText("Date : " + currentDateTimeString );
+
+            //Layout
+
+            linearRel = (LinearLayout) findViewById(R.id.linearRel);
+            relLay = (RelativeLayout) findViewById(R.id.relLay);
+            params = relLay.getLayoutParams();
 
         // récupération des EditText grâce à leur ID
 
@@ -282,9 +297,8 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
         // récupération des boutons grâce à leur ID
 
-        buttonBrowse = (Button) findViewById(R.id.buttonBrowse);
+
         buttonCancel = (Button) findViewById(R.id.buttonCancel);
-        buttonUpload = (Button) findViewById(R.id.buttonUpload);
         buttonSaveShare = (Button) findViewById(R.id.buttonSaveShare);
 
         //récupération du spinner
@@ -296,9 +310,6 @@ public class FicheBesoinActivity extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinnerStatus.setAdapter(adapter);
 
-        //Date picker
-
-        datePickerStartDate = (DatePicker) findViewById(R.id.datePickerStartDate);
 
 
 
@@ -312,10 +323,63 @@ public class FicheBesoinActivity extends AppCompatActivity {
         keys = new ArrayList<String>();
         //consultants = new ArrayList<String>();
 
+        }else {
+
+
+
+            unBesoinM = NeedDAO.getInstance().get(nt);
+
+            textViewDate = (TextView) findViewById(R.id.textViewDate);
+            String datmp = "Date : " + unBesoinM.getDate() ;
+            textViewDate.setText(datmp);
+
+            autoCompleteTextViewRaisonSocial = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextViewRaisonSocial);
+            autoCompleteTextViewRaisonSocial.setText(unBesoinM.getClient());
+
+            editTextContactName = (EditText) findViewById(R.id.editTextContactName);
+            editTextContactName.setText(unBesoinM.getContactName());
+
+            editTextTitle = (EditText) findViewById(R.id.editTextTitle);
+            editTextTitle.setText(unBesoinM.getTitle());
+
+            editTextFullDescription = (EditText) findViewById(R.id.editTextFullDescription);
+            editTextFullDescription.setText(unBesoinM.getFullDescription());
+
+            //editTextKey1 = (EditText) findViewById(R.id.editTextKey1); // NON GERE DAO
+            //editTextKey2 = (EditText) findViewById(R.id.editTextKey2);
+            //editTextKey3 = (EditText) findViewById(R.id.editTextKey3);
+
+
+           editTextDuration = (EditText) findViewById(R.id.editTextDuration);
+            editTextDuration.setText(Integer.toString(unBesoinM.getDurationMonths()));
+
+            editTextDays = (EditText) findViewById(R.id.editTextDays);
+            editTextDays.setText(Integer.toString(unBesoinM.getDurationDaysPerWeek()));
+
+            editTextLocation = (EditText) findViewById(R.id.editTextLocation);
+            editTextLocation.setText(unBesoinM.getLocation());
+
+            editTextRate = (EditText) findViewById(R.id.editTextRate);
+            editTextRate.setText(Double.toString(unBesoinM.getRate()));
+
+            editTextConsultant1 = (EditText) findViewById(R.id.editTextConsultant1);
+            editTextConsultant1.setVisibility(View.GONE); // DAO NON GERER
+
+            editTextKey1 = (EditText) findViewById(R.id.editTextKey1);
+            editTextKey1.setVisibility(View.GONE);
+            editTextKey2 = (EditText) findViewById(R.id.editTextKey2);
+            editTextKey2.setVisibility(View.GONE);
+            editTextKey3 = (EditText) findViewById(R.id.editTextKey3);
+            editTextKey3.setVisibility(View.GONE);
+
+            datePickerStartDate.updateDate(unBesoinM.getStartAtLastest().getYear(), unBesoinM.getStartAtLastest().getMonth(), unBesoinM.getStartAtLastest().getDay() );
+
+
+
+
+
+
         }
-
-
-
     }
 
     /** classe interne pour gérer le clic sur le bouton buttonRetourner. */
