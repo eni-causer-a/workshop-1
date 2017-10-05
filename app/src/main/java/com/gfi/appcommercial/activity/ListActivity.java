@@ -134,14 +134,14 @@ public class ListActivity extends AppCompatActivity {
             }
         });
         final Button loginButton = (Button) findViewById(R.id.button);
- -        loginButton.setOnClickListener(new View.OnClickListener() {
- -
- -            @Override
- -            public void onClick(View v) {
- -                Intent intent = new Intent(ListActivity.this, FicheBesoinActivity.class);
- -                startActivity(intent);
- -            }
- -        });
+         loginButton.setOnClickListener(new View.OnClickListener() {
+
+             @Override
+             public void onClick(View v) {
+                 Intent intent = new Intent(ListActivity.this, FicheBesoinActivity.class);
+                 startActivity(intent);
+             }
+         });
 
     }
 
