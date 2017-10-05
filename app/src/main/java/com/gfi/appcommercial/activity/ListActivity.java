@@ -21,13 +21,15 @@ import java.util.Date;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
-    private ListView mListView;
+    ListView lv;
     Spinner spinner;
-
+    SimpleCursorAdapter curserAdapter;
+    MatrixCursor matrixCursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
 
         //Spinner initialisation
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -67,7 +69,7 @@ public class ListActivity extends AppCompatActivity {
         // un objet de type Cursor pour le passer au SimpleCursorAdapter.
         // Si vos données sont issues d'une base SQLite,
         // utilisez votre "cursor" au lieu du "matrixCursor"
-        MatrixCursor matrixCursor = new MatrixCursor(columns);
+        matrixCursor = new MatrixCursor(columns);
         startManagingCursor(matrixCursor);
 
         // on prendra les données des colonnes 1 a 4
@@ -120,10 +122,10 @@ public class ListActivity extends AppCompatActivity {
         }
 
         // création de l'objet SimpleCursorAdapter...
-        SimpleCursorAdapter curserAdapter = new SimpleCursorAdapter(this, R.layout.row_item, matrixCursor, from, to, 0);
+        curserAdapter = new SimpleCursorAdapter(this, R.layout.row_item, matrixCursor, from, to, 0);
 
         // ...qui va remplir l'objet ListView
-        ListView lv = (ListView) findViewById(R.id.listView);
+        lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(curserAdapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -137,8 +139,12 @@ public class ListActivity extends AppCompatActivity {
                 }
             }
         });
+
+
         final Button loginButton = (Button) findViewById(R.id.button);
-         loginButton.setOnClickListener(new View.OnClickListener() {
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+
 
             @Override
             public void onClick(View v) {
@@ -146,6 +152,8 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
     public int compare(Date d1, Date d2) {
