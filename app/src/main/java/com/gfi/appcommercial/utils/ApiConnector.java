@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -26,6 +27,12 @@ public class ApiConnector {
 
             connection.setRequestMethod(method);
             connection.setRequestProperty("Content-Type", "application/json");
+
+            if (method.equals("POST" ) || method.equals("PUT")) {
+                OutputStream os = connection.getOutputStream();
+                os.write(content.getBytes());
+                os.close();
+            }
 
             try {
                 InputStream in = new BufferedInputStream(connection.getInputStream());

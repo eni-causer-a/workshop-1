@@ -71,7 +71,11 @@ public class NeedDAO {
      * @return wether or not the need has been posted on the server
      */
     public boolean post(Need need) {
-        // todo: implement
+
+//        ApiConnector connector = new ApiConnector();
+//        String response = connector.getData(ApiConnector.NEED, "POST", convertToJson(need));
+//        Log.i("AppCommercial", response);
+
         return true;
     }
 
@@ -104,7 +108,7 @@ public class NeedDAO {
         return needs;
     }
 
-    public Need convertJSONObject(JSONObject obj) {
+    private Need convertJSONObject(JSONObject obj) {
 
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.FRANCE);
 
@@ -116,6 +120,7 @@ public class NeedDAO {
                     obj.getString("title"),
                     obj.getString("fullDescription"),
                     obj.getString("location"),
+                    obj.getDouble("rate"),
                     obj.getString("geolocation"),
                     obj.getString("status"),
                     new ArrayList<String>(),
@@ -132,5 +137,34 @@ public class NeedDAO {
 
             return null;
         }
+    }
+
+    public String convertToJson(Need need) {
+        JSONObject object = new JSONObject();
+
+        try {
+            object.put("commercial", need.getCommercialName());
+            object.put("client", need.getClient());
+            object.put("contactName", need.getContactName());
+            object.put("title", need.getTitle());
+            object.put("fullDescription", need.getFullDescription());
+            object.put("location", need.getFullDescription());
+            object.put("rate", need.getRate());
+            object.put("geolocation", need.getGeolocation());
+            object.put("status", need.getStatus());
+            object.put("mainkeyFactor1", "");
+            object.put("mainKeyFactor2", "");
+            object.put("mainKeyFactor3", "");
+            object.put("consultants", need.getConsultants());
+            object.put("durationMonths", need.getDurationMonths());
+            object.put("durationDaysPerWeek", need.getDurationDaysPerWeek());
+            object.put("startAtLatest", need.getStartAtLastest());
+            object.put("date", need.getDate());
+        }
+        catch (JSONException e) {
+            Log.e("AppCommercial", e.getMessage());
+        }
+
+        return object.toString();
     }
 }
