@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.Button;
 
 import com.gfi.appcommercial.R;
 import com.gfi.appcommercial.dao.NeedDAO;
@@ -80,20 +80,24 @@ public class ListActivity extends AppCompatActivity {
         int j=0;
         int k=0;
         int l=0;
-        int gestionOpen[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-        int gestionWon[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-        int gestionLost[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-        for (i = 0; i < 10; i++) {
-            if(needs.get(i).getStatus()=="Open"){
+        int gestionOpen[] = new int[needs.size()];
+        int gestionWon[]= new int[needs.size()];;
+        int gestionLost[]= new int[needs.size()];;
+
+
+
+        //for i=0 i<length i++
+        for(i=0;i<needs.size();i++){
+            if(needs.get(i).getStatus().equals("Open")){
                 gestionOpen[j]=i;
                 j++;
             }
-            if(needs.get(i).getStatus()=="Won"){
+            if(needs.get(i).getStatus().equals("Won")){
                 gestionWon[k]=i;
                 k++;
             }
-            if(needs.get(i).getStatus()=="Lost"){
+            if(needs.get(i).getStatus().equals("Lost")){
                 gestionLost[l]=i;
                 l++;
             }
@@ -134,15 +138,14 @@ public class ListActivity extends AppCompatActivity {
             }
         });
         final Button loginButton = (Button) findViewById(R.id.button);
- -        loginButton.setOnClickListener(new View.OnClickListener() {
- -
- -            @Override
- -            public void onClick(View v) {
- -                Intent intent = new Intent(ListActivity.this, FicheBesoinActivity.class);
- -                startActivity(intent);
- -            }
- -        });
+         loginButton.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListActivity.this, FicheBesoinActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public int compare(Date d1, Date d2) {
