@@ -25,10 +25,10 @@
         </activity>
         <activity
             android:name=".activity.FicheBesoinActivity"
-            android:label="@string/fiche_besoin_titre" />
+            android:label="Need" />
         <activity
             android:name=".activity.ListActivity"
-            android:label="Client list" />
+            android:label="Needs list" />
     </application>
 
 </manifest>

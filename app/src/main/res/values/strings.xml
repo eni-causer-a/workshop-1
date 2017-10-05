@@ -21,9 +21,9 @@
     <string name="fiche_besoin_titre">Title</string>
     <string name="fiche_besoin_commercial_name">Commercial Name</string>
     <string name="fiche_besoin_description">Full description</string>
-    <string name="fiche_besoin_key1">Sucess Factor 1</string>
-    <string name="fiche_besoin_key2">Sucess Factor 2</string>
-    <string name="fiche_besoin_key3">Sucess Factor 3</string>
+    <string name="fiche_besoin_key1">Success Factor 1</string>
+    <string name="fiche_besoin_key2">Success Factor 2</string>
+    <string name="fiche_besoin_key3">Success Factor 3</string>
     <string name="fiche_besoin_duration">Duration (months)</string>
     <string name="fiche_besoin_day">Days/week</string>
     <string name="fiche_besoin_location">Location</string>
