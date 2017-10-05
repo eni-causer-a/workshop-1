@@ -72,9 +72,11 @@ public class NeedDAO {
      */
     public boolean post(Need need) {
 
-//        ApiConnector connector = new ApiConnector();
-//        String response = connector.getData(ApiConnector.NEED, "POST", convertToJson(need));
-//        Log.i("AppCommercial", response);
+
+        ApiConnector connector = new ApiConnector();
+        String response = connector.getData(ApiConnector.NEED, "POST", convertToJson(need));
+        Log.i("AppCommercial", response);
+
 
         return true;
     }
@@ -102,7 +104,10 @@ public class NeedDAO {
             }
         }
         catch (JSONException e) {
-            Log.e("AppCommerciak", e.getMessage());
+
+
+            Log.e("AppCommercial", e.getMessage());
+
         }
 
         return needs;
@@ -140,31 +145,32 @@ public class NeedDAO {
     }
 
     public String convertToJson(Need need) {
-        JSONObject object = new JSONObject();
 
-        try {
-            object.put("commercial", need.getCommercialName());
-            object.put("client", need.getClient());
-            object.put("contactName", need.getContactName());
-            object.put("title", need.getTitle());
-            object.put("fullDescription", need.getFullDescription());
-            object.put("location", need.getFullDescription());
-            object.put("rate", need.getRate());
-            object.put("geolocation", need.getGeolocation());
-            object.put("status", need.getStatus());
-            object.put("mainkeyFactor1", "");
-            object.put("mainKeyFactor2", "");
-            object.put("mainKeyFactor3", "");
-            object.put("consultants", need.getConsultants());
-            object.put("durationMonths", need.getDurationMonths());
-            object.put("durationDaysPerWeek", need.getDurationDaysPerWeek());
-            object.put("startAtLatest", need.getStartAtLastest());
-            object.put("date", need.getDate());
-        }
-        catch (JSONException e) {
-            Log.e("AppCommercial", e.getMessage());
-        }
 
-        return object.toString();
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.FRANCE);
+
+        String json = "{" +
+                "\"commercial\":\"/commercials/1\"," +
+                "\"date\":\""+need.getDate()+"\"," +
+                "\"client\":\""+need.getClient()+"\"," +
+                "\"contactName\":\""+need.getContactName()+"\"," +
+                "\"title\":\""+need.getTitle()+"\"," +
+                "\"fullDescription\":\""+need.getFullDescription()+"\"," +
+                "\"mainKeyFactor1\":\""+need.getMainKeyFactors().get(0)+"\"," +
+                "\"mainKeyFactor2\":\""+need.getMainKeyFactors().get(1)+"\"," +
+                "\"mainKeyFactor3\":\""+need.getMainKeyFactors().get(2)+"\"," +
+                "\"startAtLatest\":\""+formatter.format(need.getStartAtLastest())+"\"," +
+                "\"durationMonths\":"+need.getDurationMonths()+"," +
+                "\"durationDaysPerWeek\":"+need.getDurationDaysPerWeek()+"," +
+                "\"location\":\""+need.getLocation()+"\"," +
+                "\"geolocation\":\""+need.getGeolocation()+"\"," +
+                "\"rate\":"+need.getRate()+"," +
+                "\"consultants\":[]," +
+                "\"status\":\""+need.getStatus()+"\"," +
+                "\"descriptionFiles\":\"\"" +
+                "}";
+
+        return json;
+
     }
 }
