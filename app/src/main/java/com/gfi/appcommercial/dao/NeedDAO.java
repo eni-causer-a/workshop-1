@@ -72,9 +72,11 @@ public class NeedDAO {
      */
     public boolean post(Need need) {
 
+
         ApiConnector connector = new ApiConnector();
         String response = connector.getData(ApiConnector.NEED, "POST", convertToJson(need));
         Log.i("AppCommercial", response);
+
 
         return true;
     }
@@ -102,7 +104,10 @@ public class NeedDAO {
             }
         }
         catch (JSONException e) {
+
+
             Log.e("AppCommercial", e.getMessage());
+
         }
 
         return needs;
@@ -141,6 +146,7 @@ public class NeedDAO {
 
     public String convertToJson(Need need) {
 
+
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.FRANCE);
 
         String json = "{" +
@@ -165,5 +171,6 @@ public class NeedDAO {
                 "}";
 
         return json;
+
     }
 }
