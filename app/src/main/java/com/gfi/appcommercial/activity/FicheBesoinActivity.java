@@ -172,6 +172,15 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
         datePickerStartDate = (DatePicker) findViewById(R.id.datePickerStartDate);
 
+        //récupération du spinner
+
+        spinnerStatus = (Spinner) findViewById(R.id.spinnerStatus);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.tri, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinnerStatus.setAdapter(adapter);
+
         if (add_mod.equals("add")){
 
             currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
@@ -301,14 +310,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
         buttonCancel = (Button) findViewById(R.id.buttonCancel);
         buttonSaveShare = (Button) findViewById(R.id.buttonSaveShare);
 
-        //récupération du spinner
 
-        spinnerStatus = (Spinner) findViewById(R.id.spinnerStatus);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.tri, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinnerStatus.setAdapter(adapter);
 
 
 
@@ -374,7 +376,8 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
             datePickerStartDate.updateDate(unBesoinM.getStartAtLastest().getYear(), unBesoinM.getStartAtLastest().getMonth(), unBesoinM.getStartAtLastest().getDay() );
 
-
+            int sP = adapter.getPosition(unBesoinM.getStatus());
+            spinnerStatus.setSelection(sP);
 
 
 
