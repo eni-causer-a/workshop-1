@@ -33,10 +33,16 @@
     <string name="fiche_besoin_upload">UPLOAD</string>
     <string name="fiche_besoin_saves_hare">SAVE &amp; SHARE</string>
     <string name="fiche_besoin_cancel">CANCEL</string>
+    <string name="fiche_besoin_consultant1">Consultant n°1</string>
+    <string name="fiche_besoin_consultant2">Consultant n°2</string>
+    <string name="fiche_besoin_consultant3">Consultant n°3</string>
+    <string name="fiche_besoin_consultant4">Consultant n°4</string>
+    <string name="fiche_besoin_consultant5">Consultant n°5</string>
+    <string name="fiche_besoin_liste_consultants">Liste Constultants : </string>
     <string name="add">add</string>
     <string-array name="tri">
         <item>Open</item>
+        <item>Won</item>
         <item>Lost</item>
-        <item>Win</item>
     </string-array>
 </resources>

@@ -40,6 +40,7 @@ public class NeedMock {
                 faker.lorem.sentence(),
                 faker.lorem.paragraph(),
                 faker.address.streetAddress(),
+                faker.number.between(1, 24),
                 faker.number.hexadecimal(6),
                 randomStatus(),
                 randomMainKeyFactors(),

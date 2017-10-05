@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+import android.widget.Button;
 
 import com.gfi.appcommercial.R;
 import com.gfi.appcommercial.dao.NeedDAO;
@@ -138,6 +138,7 @@ public class ListActivity extends AppCompatActivity {
             }
         });
         final Button loginButton = (Button) findViewById(R.id.button);
+
         loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -146,6 +147,7 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     public int compare(Date d1, Date d2) {

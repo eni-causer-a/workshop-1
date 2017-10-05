@@ -102,7 +102,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editText11"
+                    android:id="@+id/editTextDuration"
                     android:layout_width="115dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -113,7 +113,7 @@
                     android:textSize="17sp" />
 
                 <EditText
-                    android:id="@+id/editText12"
+                    android:id="@+id/editTextDays"
                     android:layout_width="118dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -126,14 +126,19 @@
                     android:textSize="17sp" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText10"
+            <TextView
+                android:id="@+id/textViewStartDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_horizontal_margin"
-                android:ems="10"
-                android:hint="Start at the latest"
-                android:inputType="date" />
+                android:text="Start at the latest : "
+                android:textSize="21sp" />
+
+            <DatePicker
+                android:id="@+id/datePickerStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin" />
 
             <EditText
                 android:id="@+id/editTextLocation"
@@ -182,14 +187,22 @@
                 android:id="@+id/buttonUpload"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="14dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="14dp"
                 android:text="@string/fiche_besoin_upload"
                 android:textAlignment="center" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginStart="14dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -208,29 +221,92 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/relLay"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="horizontal">
+                android:layout_height="150dp">
 
-                <Button
-                    android:id="@+id/buttonSaveShare"
+                <EditText
+                    android:id="@+id/editTextConsultant1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_horizontal_margin"
                     android:layout_weight="1"
-                    android:text="@string/fiche_besoin_saves_hare" />
+                    android:ems="10"
+                    android:hint="@string/fiche_besoin_consultant1"
+                    android:inputType="textMultiLine" />
 
-                <Button
-                    android:id="@+id/buttonCancel"
+                <EditText
+                    android:id="@+id/editTextConsultant2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_horizontal_margin"
                     android:layout_weight="1"
-                    android:text="@string/fiche_besoin_cancel" />
-            </LinearLayout>
+                    android:ems="10"
+                    android:hint="@string/fiche_besoin_consultant2"
+                    android:inputType="textMultiLine"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/editTextConsultant3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/fiche_besoin_consultant3"
+                    android:inputType="textMultiLine"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/editTextConsultant4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/fiche_besoin_consultant4"
+                    android:inputType="textMultiLine"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/editTextConsultant5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:ems="10"
+                    android:hint="@string/fiche_besoin_consultant5"
+                    android:inputType="textMultiLine"
+                    android:visibility="invisible" />
+
+                <LinearLayout
+                    android:id="@+id/linearRel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="horizontal"
+                    android:translationY="55dp">
+
+                    <Button
+                        android:id="@+id/buttonSaveShare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:text="@string/fiche_besoin_saves_hare" />
+
+                    <Button
+                        android:id="@+id/buttonCancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_weight="1"
+                        android:text="@string/fiche_besoin_cancel" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>
