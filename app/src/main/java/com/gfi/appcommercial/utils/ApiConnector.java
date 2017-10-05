@@ -14,7 +14,7 @@ import java.net.URL;
 
 public class ApiConnector {
 
-    private static final String API_URL = "http://10.0.2.2:8000/";
+    private static final String API_URL = "http://213.32.75.128/web/app.php/";
 
     public static final String NEED = "needs";
     public static final String COMMERCIAL = "commercials";
