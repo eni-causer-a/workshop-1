@@ -3,15 +3,12 @@ package com.gfi.appcommercial.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-<<<<<<< HEAD
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CheckableImageButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-=======
->>>>>>> 02d2916786c596a116c0631cb93d79f62399f15b
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Intent;
@@ -115,16 +112,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     if (CommercialDAO.getInstance().login(email, password)){
                         attemptLogin();
                     //todo: gestion du remember me
-                    }
-                    // crée une Intent
-                    Intent uneIntent = new Intent(LoginActivity.this, ListActivity.class);
-                    // passe l' email à l'intent
-                    uneIntent.putExtra("email", email);
-                    // démarre l'activité à partir de l'Intent
-                    startActivity(uneIntent);
-                    // termine l'activité en cours
-                    finish();
 
+
+                    }
 
                 }
 
@@ -233,9 +223,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+
+            // crée une Intent
+            Intent uneIntent = new Intent(LoginActivity.this, ListActivity.class);
+            // passe l' email à l'intent
+            uneIntent.putExtra("email", email);
+            // démarre l'activité à partir de l'Intent
+            startActivity(uneIntent);
         }
-        Intent intent = new Intent(this, ListActivity.class);
-        startActivity(intent);
+
+
 
     }
 
