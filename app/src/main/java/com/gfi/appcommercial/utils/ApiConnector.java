@@ -34,6 +34,20 @@ public class ApiConnector {
                 os.close();
             }
 
+            if (connection.getResponseCode() == 400) {
+
+                InputStream in = new BufferedInputStream(connection.getErrorStream());
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                StringBuilder builder = new StringBuilder();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line);
+                }
+                Log.e("AppCommercial", builder.toString());
+            }
+
             try {
                 InputStream in = new BufferedInputStream(connection.getInputStream());
 
