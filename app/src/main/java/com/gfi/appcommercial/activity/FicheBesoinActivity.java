@@ -1,6 +1,7 @@
 package com.gfi.appcommercial.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.gfi.appcommercial.R;
+import com.gfi.appcommercial.dao.CommercialDAO;
 import com.gfi.appcommercial.dao.NeedDAO;
 import com.gfi.appcommercial.model.Need;
 
@@ -103,7 +105,8 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
     //Nom Commercial
 
-    private final String EXTRA_NOM = "nom";
+
+    private final String EXTRA_MOD = "0";
 
     // Le besoin
 
@@ -130,6 +133,10 @@ public class FicheBesoinActivity extends AppCompatActivity {
     RelativeLayout relLay;
     ViewGroup.LayoutParams params;
 
+    //EXTRA
+
+    private String nom;
+    private String add_mod;
 
 
 
@@ -139,7 +146,11 @@ public class FicheBesoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fiche_besoin);
 
+        Intent uneIntent = getIntent();
+        nom = CommercialDAO.getInstance().getName();
+        add_mod = uneIntent.getStringExtra(EXTRA_MOD);
 
+        if (add_mod.equals("add")){
         // récupération des TextView grâce à leur ID
 
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
@@ -149,7 +160,7 @@ public class FicheBesoinActivity extends AppCompatActivity {
         textViewFileToUp = (TextView) findViewById(R.id.textViewFileToUp);
         //Le nomdu fichier à mettre ici quand il est up
         textViewNomCommercial = (TextView) findViewById(R.id.textViewNomCommercial);
-        textViewNomCommercial.setText(EXTRA_NOM);
+        textViewNomCommercial.setText(nom);
         textViewStatus = (TextView) findViewById(R.id.textViewStatus);
 
         //Layout
@@ -303,6 +314,10 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
         }
 
+
+
+    }
+
     /** classe interne pour gérer le clic sur le bouton buttonRetourner. */
     private class buttonRetournerClickListener implements View.OnClickListener {
         public void onClick(View v) {
@@ -313,6 +328,39 @@ public class FicheBesoinActivity extends AppCompatActivity {
 
 
     private class buttonCreerClickListener implements View.OnClickListener {
+        public void onClick(View v) {
+            //progressBar.setVisibility(View.VISIBLE);
+
+
+            contactName = editTextContactName.getText().toString();
+            title = editTextTitle.getText().toString();
+            fullDescription = editTextFullDescription.getText().toString();
+            key1 = editTextKey1.getText().toString();
+            key2 = editTextKey2.getText().toString();
+            key3 = editTextKey3.getText().toString();
+            duration = editTextDuration.getText().toString();
+            days = editTextDays.getText().toString();
+            location = editTextLocation.getText().toString();
+            rate = editTextRate.getText().toString();
+            consultant1 = editTextConsultant1.getText().toString();
+            consultant2 = editTextConsultant2.getText().toString();
+            consultant3 = editTextConsultant3.getText().toString();
+            consultant4 = editTextConsultant4.getText().toString();
+            consultant5 = editTextConsultant5.getText().toString();
+            raisonSocial = autoCompleteTextViewRaisonSocial.getText().toString();
+            status = spinnerStatus.getSelectedItem().toString();
+
+            int   day  = datePickerStartDate.getDayOfMonth();
+            int   month= datePickerStartDate.getMonth();
+            int   year = datePickerStartDate.getYear();
+            tmp = new Date(day, month, year);
+
+            new TacheCreerBesoin().execute();
+        }
+
+    }
+
+    private class buttonModifierClickListener implements View.OnClickListener {
         public void onClick(View v) {
             //progressBar.setVisibility(View.VISIBLE);
 
