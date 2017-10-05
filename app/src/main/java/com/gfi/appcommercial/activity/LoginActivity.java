@@ -3,12 +3,6 @@ package com.gfi.appcommercial.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.CheckableImageButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Intent;
@@ -32,19 +26,15 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Checkable;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.gfi.appcommercial.R;
 import com.gfi.appcommercial.dao.CommercialDAO;
-import com.gfi.appcommercial.dao.NeedDAO;
-import com.gfi.appcommercial.model.Need;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
-import static com.gfi.appcommercial.R.id.email;
 
 /**
  * A login screen that offers login via email/password.
@@ -104,19 +94,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
 
             //appel login du dao
-                @Override
-                public void onClick(View view) {
-                    email = mEmailView.getText().toString();
-                    password = mPasswordView.getText().toString();
-                    Boolean rememberMe = mRememberMeView.isChecked();
-                    if (CommercialDAO.getInstance().login(email, password)){
-                        attemptLogin();
+            @Override
+            public void onClick(View view) {
+                email = mEmailView.getText().toString();
+                password = mPasswordView.getText().toString();
+                Boolean rememberMe = mRememberMeView.isChecked();
+                if (CommercialDAO.getInstance().login(email, password)){
+                    attemptLogin();
                     //todo: gestion du remember me
 
 
-                    }
-
                 }
+
+            }
 
         });
 
@@ -126,7 +116,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
 
-        private void populateAutoComplete() {
+    private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
         }
@@ -185,8 +175,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-         email = mEmailView.getText().toString();
-         password = mPasswordView.getText().toString();
+        email = mEmailView.getText().toString();
+        password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -227,7 +217,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // crée une Intent
             Intent uneIntent = new Intent(LoginActivity.this, ListActivity.class);
             // passe l' email à l'intent
-            uneIntent.putExtra("email", email);
+            uneIntent.putExtra("email", email+"@gfi.fr");
             // démarre l'activité à partir de l'Intent
             startActivity(uneIntent);
         }
