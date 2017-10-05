@@ -60,7 +60,13 @@ public class NeedDAO {
      * @return Need
      */
     public Need get(String title) {
-        // todo: implement
+
+        for (Need need : getAll()) {
+            if (need.getTitle().equals(title)) {
+                return need;
+            }
+        }
+        
         return mock.getNeeds(1).get(0);
     }
 
