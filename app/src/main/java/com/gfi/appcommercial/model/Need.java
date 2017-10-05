@@ -1,6 +1,7 @@
 package com.gfi.appcommercial.model;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -77,18 +78,29 @@ public class Need {
      */
     private Date date;
 
+    private double rate; // price hors tax
+
     /**
      * Map of files associatied with the need
      */
     private Map<String, File> descriptionFiles;
 
-    public Need(String commercialName, String client, String contactName, String title, String fullDescription, String location, String geolocation, String status, List<String> mainKeyFactors, List<String> consultants, int durationMonths, int durationDaysPerWeek, Date startAtLastest, Date date, Map<String, File> descriptionFiles) {
+    public Need(){
+
+        this.consultants = new ArrayList<>();
+        this.mainKeyFactors = new ArrayList<>();
+
+
+    }
+
+    public Need(String commercialName, String client, String contactName, String title, String fullDescription, String location, double rate, String geolocation, String status, List<String> mainKeyFactors, List<String> consultants, int durationMonths, int durationDaysPerWeek, Date startAtLastest, Date date, Map<String, File> descriptionFiles) {
         this.commercialName = commercialName;
         this.client = client;
         this.contactName = contactName;
         this.title = title;
         this.fullDescription = fullDescription;
         this.location = location;
+        this.rate = rate;
         this.geolocation = geolocation;
         this.status = status;
         this.mainKeyFactors = mainKeyFactors;
@@ -98,6 +110,9 @@ public class Need {
         this.startAtLastest = startAtLastest;
         this.date = date;
         this.descriptionFiles = descriptionFiles;
+        this.consultants = new ArrayList<>();
+        this.mainKeyFactors = new ArrayList<>();
+
     }
 
     public String getCommercialName() {
@@ -194,13 +209,13 @@ public class Need {
         return consultants;
     }
 
-    public boolean addConsultant(String consultant) {
-        if (consultants.size() < 5) {
-            consultants.add(consultant);
-            return true;
-        }
+    public void addConsultant(String consultant) {
 
-        return false;
+            consultants.add(consultant);
+
+
+
+
     }
 
     public boolean removeConsultant(String consultant) {
@@ -255,4 +270,13 @@ public class Need {
     public void setDescriptionFiles(Map<String, File> descriptionFiles) {
         this.descriptionFiles = descriptionFiles;
     }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
 }
