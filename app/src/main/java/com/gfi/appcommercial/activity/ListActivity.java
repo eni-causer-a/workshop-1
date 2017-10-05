@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -37,7 +36,7 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-
+/*
         //Spinner initialisation
         spinner = (Spinner) findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -63,7 +62,7 @@ public class ListActivity extends AppCompatActivity {
             }
 
         });
-
+*/
         NeedDAO dao = NeedDAO.getInstance();
         final List<Need> needs = dao.getAll();
 
@@ -136,7 +135,7 @@ public class ListActivity extends AppCompatActivity {
         // création de l'objet SimpleCursorAdapter...
         curserAdapter = new SimpleCursorAdapter(this, R.layout.row_item, matrixCursor, from, to, 0);
 
-        SimpleCursorAdapter titre = new SimpleCursorAdapter(this, R.layout.row_item, matrixtitre, from, to, 0);
+        SimpleCursorAdapter titre = new SimpleCursorAdapter(this, R.layout.row_title, matrixtitre, from, to, 0);
 
 
         // ...qui va remplir l'objet ListView
